@@ -8,6 +8,8 @@ public class MotdManager {
 
     private final ShieldMotd plugin;
     private Random random;
+    private boolean limitBadMotds;
+    private boolean denyProtocols;
 
     public MotdManager(ShieldMotd plugin) {
         //TODO: implement system for motd here, create individual system for make a correct structure for motd
@@ -27,4 +29,11 @@ public class MotdManager {
         return "JA";
     }
 
+    public boolean isLimitBadMotds() {
+        return limitBadMotds;
+    }
+
+    public boolean isDenyProtocol() {
+        return denyProtocols;
+    }
 }

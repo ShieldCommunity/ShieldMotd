@@ -21,19 +21,19 @@ public class ShieldMotdCommand extends Command {
             final ProxiedPlayer player = (ProxiedPlayer) sender;
 
             if (args.length == 0) {
-                player.sendMessage(new ComponentBuilder("ShieldMotd simple & lightweight motd plugin by xIsm4")
-                    .color(ChatColor.YELLOW).create());
+                player.sendMessage(new ComponentBuilder("ShieldMotd - simple & lightweight motd plugin by xIsm4")
+                        .color(ChatColor.YELLOW).create());
                 return;
             }
 
             if ("reload".equalsIgnoreCase(args[0])) {
                 core.getConfigurationManager().reload();
-                player.sendMessage(new ComponentBuilder("ShieldMotd has been reload successfully")
-                    .color(ChatColor.YELLOW).create());
+                player.sendMessage(new ComponentBuilder("ShieldMotd - has been reload successfully")
+                        .color(ChatColor.YELLOW).create());
 
             } else {
                 player.sendMessage(new ComponentBuilder("ShieldMotd - The command does not exist")
-                    .color(ChatColor.RED).create());
+                        .color(ChatColor.RED).create());
             }
         }
     }

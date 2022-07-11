@@ -10,7 +10,7 @@ public class ChannelHandlerManager {
             try {
                 channel.close();
             } catch (FastMotdException exception) {
-                //XD
+                //ignored
             }
         }
     }
