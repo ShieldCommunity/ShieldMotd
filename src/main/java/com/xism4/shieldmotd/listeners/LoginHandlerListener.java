@@ -28,7 +28,7 @@ public class LoginHandlerListener implements Listener {
         String address = event.getConnection().getAddress().getAddress().getHostAddress();
         final PendingConnection connection = event.getConnection();
 
-        if (connection == null || connection.getUniqueId() == null || packet == null || handshake == null) {
+        if (connection == null || connection.getUniqueId() == null || packet == null) {
             channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
             event.setCancelled(true);
 
