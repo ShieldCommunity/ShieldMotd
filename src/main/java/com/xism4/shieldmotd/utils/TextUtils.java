@@ -12,7 +12,7 @@ public class TextUtils {
         return MiniMessage.miniMessage().deserialize(
             MiniMessage.miniMessage().serialize(
                 BungeeComponentSerializer.get().deserialize(
-                    TextComponent.fromLegacyText(text))));
+                    TextComponent.fromLegacyText(text.replace("\n", "<br>")))));
     }
 
     public static TextComponent toBungeeComponent(String text) {

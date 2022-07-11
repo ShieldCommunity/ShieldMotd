@@ -22,10 +22,10 @@ public class MotdManager {
     public MotdManager(ShieldMotd plugin) {
         this.plugin = plugin;
         this.random = new Random();
+        setupMotd();
     }
 
     public void setupMotd() {
-        ///fixme: Temporary fix for the motd bug, will be removed in the future @Jonakls
         motds = plugin.getConfigurationManager()
             .getConfig()
             .getStringList("motd.lines")
