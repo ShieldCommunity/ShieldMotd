@@ -1,5 +1,7 @@
 package com.xism4.shieldmotd.listeners;
 
+import java.util.logging.Level;
+
 import com.xism4.shieldmotd.ShieldMotd;
 import com.xism4.shieldmotd.utils.FastMotdException;
 import io.netty.channel.ChannelHandlerContext;
@@ -35,8 +37,8 @@ public class ProxyHandlerListener implements Listener {
 
         if (cause instanceof FastMotdException || cause instanceof BadPacketException || cause instanceof OverflowPacketException) {
             core.getChannelHandlerManager().closeChannel((ChannelHandlerContext) this, address);
-            core.getInstance().getLogger().info(
-                    "The connection -> " + address + " rate-limited bad-joins, we suggest blacklist");
+            core.getInstance().getLogger().log(Level.INFO,
+                    "The connection -> {0} rate-limited bad-joins, we suggest blacklist", address);
             return;
         }
 

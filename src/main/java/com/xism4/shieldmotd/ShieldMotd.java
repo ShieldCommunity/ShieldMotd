@@ -10,9 +10,9 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 public final class ShieldMotd extends Plugin {
 
-    public static ChannelHandlerManager channelHandlerManager;
-    public static ConfigurationManager configurationManager;
-    public static ShieldMotd shieldMotdInstance;
+    private ChannelHandlerManager channelHandlerManager;
+    private ConfigurationManager configurationManager;
+    private ShieldMotd shieldMotdInstance;
 
     @Override
     public void onEnable() {
