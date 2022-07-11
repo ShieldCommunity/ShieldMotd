@@ -16,13 +16,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 
-import static com.xism4.shieldmotd.utils.TextUtils.toComponent;
+import static com.xism4.shieldmotd.utils.TextUtils.*;
 
 public class ProxyHandlerListener implements Listener {
 
     private final ShieldMotd core;
     private long lastInitialException;
     private Throwable cause;
+    private final Random random = new Random();
 
     public ProxyHandlerListener(ShieldMotd core) {
         this.core = core;
@@ -51,9 +52,9 @@ public class ProxyHandlerListener implements Listener {
 
         ///fixme: Temporary fix for the motd bug, will be removed in the future @Jonakls
         List<String> motd = configurationManager.getConfig().getStringList("motd.lines");
-        Random random = new Random();
+        
         String motdLine = motd.get(random.nextInt(motd.size()));
-        pingHandler.setDescriptionComponent(toComponent(motdLine));
+        pingHandler.setDescriptionComponent(toTextComponent(motdLine));
 
     }
 }
