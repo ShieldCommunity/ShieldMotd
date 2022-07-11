@@ -29,7 +29,7 @@ public class LoginHandlerListener implements Listener {
         final PendingConnection connection = event.getConnection();
 
         if (connection == null || connection.getUniqueId() == null || packet == null) {
-            channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
+            //Fixme: channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
             event.setCancelled(true);
 
             core.getLogger().log(Level.INFO,
