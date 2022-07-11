@@ -19,4 +19,8 @@ public class TextUtils {
         return new TextComponent(BungeeComponentSerializer.get().serialize(toComponent(text)));
     }
 
+    public static TextComponent toLegacyBungeeComponent(String text) {
+        return new TextComponent(BungeeComponentSerializer.legacy().serialize(toComponent(text)));
+    }
+
 }

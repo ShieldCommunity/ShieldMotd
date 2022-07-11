@@ -5,6 +5,7 @@ import com.xism4.shieldmotd.listeners.LoginHandlerListener;
 import com.xism4.shieldmotd.listeners.ProxyHandlerListener;
 import com.xism4.shieldmotd.manager.ChannelHandlerManager;
 import com.xism4.shieldmotd.manager.ConfigurationManager;
+import com.xism4.shieldmotd.manager.MotdManager;
 
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -13,14 +14,13 @@ public final class ShieldMotd extends Plugin {
 
     private ChannelHandlerManager channelHandlerManager;
     private ConfigurationManager configurationManager;
-    private ShieldMotd shieldMotdInstance;
+    private MotdManager motdManager;    
 
     @Override
     public void onEnable() {
-        configurationManager = new ConfigurationManager
-                (
-                        this, "config.yml"
-                );
+        this.configurationManager = new ConfigurationManager(this, "config.yml");
+        this.motdManager = new MotdManager(this);
+        this.channelHandlerManager = new ChannelHandlerManager();
         loadCommands();
         loadEvents();
 
@@ -41,8 +41,8 @@ public final class ShieldMotd extends Plugin {
         return configurationManager;
     }
 
-    public ShieldMotd getInstance() {
-        return shieldMotdInstance;
+    public MotdManager getMotdManager() {
+        return this.motdManager;
     }
 
     public void loadEvents() {

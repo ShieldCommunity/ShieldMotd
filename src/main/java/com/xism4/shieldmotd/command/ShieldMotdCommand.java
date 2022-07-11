@@ -28,6 +28,7 @@ public class ShieldMotdCommand extends Command {
 
             if ("reload".equalsIgnoreCase(args[0])) {
                 core.getConfigurationManager().reload();
+                core.getMotdManager().setupMotd();
                 player.sendMessage(new ComponentBuilder("ShieldMotd - has been reload successfully")
                         .color(ChatColor.YELLOW).create());
 

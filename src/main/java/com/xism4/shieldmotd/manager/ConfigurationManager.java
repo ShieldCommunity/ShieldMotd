@@ -1,9 +1,7 @@
 package com.xism4.shieldmotd.manager;
 
 import com.xism4.shieldmotd.ShieldMotd;
-import com.xism4.shieldmotd.utils.TextUtils;
 
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
@@ -12,15 +10,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.logging.Level;
-import java.util.stream.Collectors;
 
 public class ConfigurationManager {
 
     private final ShieldMotd plugin;
     private Configuration config;
-    private List<BaseComponent> motds;
     private final Path path;
     private final String fileName;
 
@@ -56,7 +51,6 @@ public class ConfigurationManager {
         try {
             config = ConfigurationProvider.getProvider(YamlConfiguration.class)
                     .load(path.toFile());
-            loadMotds();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -66,7 +60,6 @@ public class ConfigurationManager {
         try {
             ConfigurationProvider.getProvider(YamlConfiguration.class)
                     .save(config, path.toFile());
-            loadMotds();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,26 +69,13 @@ public class ConfigurationManager {
         try {
             config = ConfigurationProvider.getProvider(YamlConfiguration.class)
                     .load(path.toFile());
-            loadMotds();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void loadMotds() {
-        ///fixme: Temporary fix for the motd bug, will be removed in the future @Jonakls
-        motds = config.getStringList("motd.lines")
-            .stream()
-            .map(TextUtils::toBungeeComponent)
-            .collect(Collectors.toList());
-    }
-
     public Configuration getConfig() {
         return config;
-    }
-
-    public List<BaseComponent> getMotds() {
-        return this.motds;
     }
 
     public int getInt(String path) {
