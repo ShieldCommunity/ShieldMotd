@@ -24,7 +24,7 @@ public final class ShieldMotd extends Plugin {
         loadCommands();
         loadEvents();
 
-        getLogger().info("ShieldMotd has been loaded sucesfully, running " +
+        getLogger().info("ShieldMotd has been loaded successfully, running on" +
                 ProxyServer.getInstance().getName());
     }
 

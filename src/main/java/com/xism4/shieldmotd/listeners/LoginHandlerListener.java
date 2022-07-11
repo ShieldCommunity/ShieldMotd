@@ -28,9 +28,12 @@ public class LoginHandlerListener implements Listener {
         String address = event.getConnection().getAddress().getAddress().getHostAddress();
         final PendingConnection connection = event.getConnection();
 
-        if (event.isCancelled() && connection == null && packet == null && handshake == null) {
+        if (connection == null || connection.getUniqueId() == null || packet == null || handshake == null) {
             channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
-            core.getLogger().log(Level.INFO, "The connection -> {0} thrown multiple weird exceptions");
+            event.setCancelled(true);
+
+            core.getLogger().log(Level.INFO,
+                    "The connection -> {0} thrown multiple weird exceptions");
         }
     }
 }
