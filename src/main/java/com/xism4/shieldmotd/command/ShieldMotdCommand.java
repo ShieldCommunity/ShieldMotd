@@ -27,7 +27,7 @@ public class ShieldMotdCommand extends Command {
                 ));
 
             } else if (args[0].equalsIgnoreCase("reload")) {
-                configurationManager.reload();
+                core.getConfigurationManager().reload();
                 player.sendMessage(ChatColor.translateAlternateColorCodes(
                         '&', "&eShieldMotd has been reload successfully"
                 ));
