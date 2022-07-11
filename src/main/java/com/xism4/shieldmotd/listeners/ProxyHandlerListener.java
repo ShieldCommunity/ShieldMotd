@@ -21,7 +21,7 @@ import static com.xism4.shieldmotd.utils.TextUtils.toComponent;
 public class ProxyHandlerListener implements Listener {
 
     private final ShieldMotd core;
-    private static long lastInitialException;
+    private long lastInitialException;
     private Throwable cause;
 
     public ProxyHandlerListener(ShieldMotd core) {
