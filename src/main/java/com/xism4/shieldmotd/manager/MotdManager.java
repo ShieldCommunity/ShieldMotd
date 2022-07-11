@@ -2,6 +2,10 @@ package com.xism4.shieldmotd.manager;
 
 import com.xism4.shieldmotd.ShieldMotd;
 
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer;
+import net.md_5.bungee.api.chat.BaseComponent;
+
 import java.util.Random;
 
 public class MotdManager {
@@ -24,9 +28,10 @@ public class MotdManager {
         //TODO: make one motd list and split lines with \n value from config file
     }
 
-    public String getMotd() {
+    public BaseComponent[] getMotd() {
         //TODO: return single motd and processed with random selection
-        return "JA";
+        
+        return BungeeComponentSerializer.get().serialize(MiniMessage.miniMessage().deserialize("a"));
     }
 
     public boolean isLimitBadMotds() {
