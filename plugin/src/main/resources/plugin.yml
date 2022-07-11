@@ -1,8 +1,0 @@
-name: ShieldMotd
-main: com.xism4.shieldhub.ShieldMotd
-authors: [ xIsm4 ]
-version: 0.0.1
-api-version: "1.13"
-
-
-

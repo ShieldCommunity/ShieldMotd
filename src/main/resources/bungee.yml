@@ -1,0 +1,8 @@
+name: ShieldMotd
+version: '${project.version}'
+main: com.xism4.shieldmotd.ShieldMotd
+author: xIsm4FlX
+
+commands:
+  shieldmotd:
+    description: Simple motd command

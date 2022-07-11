@@ -1,0 +1,9 @@
+#You can edit what ever you want, add variables and that stuff
+  motd:
+    lines:
+      - |-
+        &b&lCleanMOTD &f&lDefault &b&lMOTD
+        &7There are &a%onlineplayers%&7 players online!
+      - |-
+        &aCleanMOTD Default MOTD &c[Optimized]
+        &d&lCome and enjoy our brand new games!
