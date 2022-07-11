@@ -1,20 +1,27 @@
 package com.xism4.shieldmotd;
 
+import com.xism4.shieldmotd.command.ShieldMotdCommand;
+import com.xism4.shieldmotd.listeners.ProxyHandlerListener;
 import com.xism4.shieldmotd.manager.ChannelHandlerManager;
 import com.xism4.shieldmotd.manager.ConfigurationManager;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.plugin.Plugin;
 
 
-public final class ShieldMotd extends ShieldMotdManager {
+public final class ShieldMotd extends Plugin {
 
     public static ChannelHandlerManager channelHandlerManager;
     public static ConfigurationManager configurationManager;
+    public static ShieldMotd shieldMotdInstance;
 
     @Override
     public void onEnable() {
-        loadConfiguration();
-        loadCommands(this);
-        loadCommands(this);
+        configurationManager = new ConfigurationManager
+                (
+                        this, "config.yml"
+                );
+        loadCommands();
+        loadEvents();
 
         getLogger().info("ShieldMotd has been loaded sucesfully, running " +
                 ProxyServer.getInstance().getName());
@@ -31,5 +38,17 @@ public final class ShieldMotd extends ShieldMotdManager {
 
     public ConfigurationManager getConfigurationManager() {
         return configurationManager;
+    }
+
+    public ShieldMotd getInstance() {
+        return shieldMotdInstance;
+    }
+
+    public void loadEvents() {
+        getProxy().getPluginManager().registerListener(this, new ProxyHandlerListener(this));
+    }
+
+    public void loadCommands() {
+        getProxy().getPluginManager().registerCommand(this, new ShieldMotdCommand(this));
     }
 }

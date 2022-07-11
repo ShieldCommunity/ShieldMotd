@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class ChannelHandlerManager {
 
+    private boolean stackTrace;
+
     public void closeChannel(ChannelHandlerContext channel, String address) {
         if (channel != null && !address.equals("127.0.0.1")) {
             try {
@@ -16,5 +18,9 @@ public class ChannelHandlerManager {
                 //XD
             }
         }
+    }
+
+    public boolean causeStacktrace() {
+        return stackTrace;
     }
 }

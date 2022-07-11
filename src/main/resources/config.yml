@@ -2,8 +2,7 @@
   motd:
     lines:
       - |-
-        &b&lCleanMOTD &f&lDefault &b&lMOTD
-        &7There are &a%onlineplayers%&7 players online!
+        o_O
+        O_o
       - |-
-        &aCleanMOTD Default MOTD &c[Optimized]
-        &d&lCome and enjoy our brand new games!
+        o_o

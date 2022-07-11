@@ -1,7 +1,6 @@
 package com.xism4.shieldmotd.manager;
 
 import com.xism4.shieldmotd.ShieldMotd;
-import com.xism4.shieldmotd.ShieldMotdManager;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
@@ -13,12 +12,12 @@ import java.nio.file.Files;
 
 public class ConfigurationManager {
 
-    private final ShieldMotdManager plugin;
+    private final ShieldMotd plugin;
     private Configuration config;
     private final File file;
     private final String fileName;
 
-    public ConfigurationManager(ShieldMotdManager plugin, String fileName) {
+    public ConfigurationManager(ShieldMotd plugin, String fileName) {
         this.plugin = plugin;
         this.fileName = fileName;
         this.file = new File(plugin.getDataFolder(), fileName);

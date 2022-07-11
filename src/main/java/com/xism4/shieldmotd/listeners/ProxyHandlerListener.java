@@ -1,21 +1,22 @@
 package com.xism4.shieldmotd.listeners;
 
 import com.xism4.shieldmotd.ShieldMotd;
-import com.xism4.shieldmotd.manager.ChannelHandlerManager;
+import com.xism4.shieldmotd.utils.FastMotdException;
 import io.netty.channel.ChannelHandlerContext;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
-import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
-
-import java.net.InetSocketAddress;
+import net.md_5.bungee.protocol.BadPacketException;
+import net.md_5.bungee.protocol.OverflowPacketException;
 
 public class ProxyHandlerListener implements Listener {
 
     private ShieldMotd core;
+    private static long lastInitialException;
+    private Throwable cause;
 
     public ProxyHandlerListener(ShieldMotd core) {
         this.core = core;
@@ -27,8 +28,15 @@ public class ProxyHandlerListener implements Listener {
         String address = event.getConnection().getAddress().getAddress().getHostAddress();
 
         if (pingHandler == null) {
-            core.getChannelHandlerManager().closeChannel((ChannelHandlerContext) this,address);
+            core.getChannelHandlerManager().closeChannel((ChannelHandlerContext) this, address);
             core.getLogger().warning("An handshake was null and cancelled");
+            return;
+        }
+
+        if (cause instanceof FastMotdException || cause instanceof BadPacketException || cause instanceof OverflowPacketException) {
+            core.getChannelHandlerManager().closeChannel((ChannelHandlerContext) this, address);
+            core.getInstance().getLogger().info(
+                    "The connection -> " + address + " rate-limited bad-joins, we suggest blacklist");
             return;
         }
 
