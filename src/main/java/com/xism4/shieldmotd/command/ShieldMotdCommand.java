@@ -9,7 +9,7 @@ import net.md_5.bungee.api.plugin.Command;
 
 public class ShieldMotdCommand extends Command {
 
-    private ShieldMotd core;
+    private final ShieldMotd core;
 
     public ShieldMotdCommand(ShieldMotd core) {
         super("ShieldMotd");
