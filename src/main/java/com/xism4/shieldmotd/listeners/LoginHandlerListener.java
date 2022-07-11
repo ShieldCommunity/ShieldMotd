@@ -33,7 +33,7 @@ public class LoginHandlerListener implements Listener {
             event.setCancelled(true);
 
             core.getLogger().log(Level.INFO,
-                    "The connection -> {0} thrown multiple weird exceptions");
+                    "The connection -> {0} thrown multiple weird exceptions", address);
         }
     }
 }

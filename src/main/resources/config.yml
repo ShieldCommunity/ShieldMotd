@@ -2,7 +2,6 @@
   motd:
     lines:
       - |-
-        o_O
-        O_o
-      - |-
-        o_o
+        <gradient:red:blue>ShieldMotd</gradient> <yellow>Lightweight Motd<reset>
+        <gradient:#F53803:#FCE043>Full HEX color Support</gradient>
+      - <gradient:red:blue>ShieldMotd</gradient> <newline><aqua>Full motd from single line
