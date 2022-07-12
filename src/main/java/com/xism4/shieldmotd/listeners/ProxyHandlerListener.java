@@ -4,6 +4,7 @@ import com.xism4.shieldmotd.ShieldMotd;
 import com.xism4.shieldmotd.manager.ChannelHandlerManager;
 import com.xism4.shieldmotd.utils.FastMotdException;
 import io.netty.channel.ChannelHandlerContext;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
@@ -18,7 +19,7 @@ public class ProxyHandlerListener implements Listener {
     private final ShieldMotd core;
     private long lastInitialException;
     private Throwable cause;
-    
+
 
     public ProxyHandlerListener(ShieldMotd core) {
         this.core = core;
@@ -30,6 +31,12 @@ public class ProxyHandlerListener implements Listener {
         ChannelHandlerManager channelHandlerManager = core.getChannelHandlerManager();
         ServerPing pingHandler = event.getResponse();
         String address = event.getConnection().getAddress().getAddress().getHostAddress();
+
+        if (ProxyServer.getInstance().getName().equals(core.getConfigurationManager().getStringList("motd.ignore-proxy"))) {
+            core.getLogger().log(Level.INFO,
+                    "-> Disabled brand has been detected, ignoring checks");
+            return;
+        }
 
         if (pingHandler == null) {
             channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
