@@ -30,9 +30,9 @@ public class LoginHandlerListener implements Listener {
         final PendingConnection connection = event.getConnection();
 
         if (connection == null || connection.getUniqueId() == null || packet == null) {
-            if(ProxyServer.getInstance().getName().equals("NullCordX")) {
+            if(ProxyServer.getInstance().getName().equals(core.getConfigurationManager().getStringList("motd.ignore-proxy"))) {
                 core.getLogger().log(Level.INFO,
-                        "-> NullCordX has been detected, ignoring checks");
+                        "-> Disabled brand has been detected, ignoring checks");
                 return;
             }
             channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
