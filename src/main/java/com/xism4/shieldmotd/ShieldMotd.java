@@ -1,6 +1,7 @@
 package com.xism4.shieldmotd;
 
 import com.xism4.shieldmotd.command.ShieldMotdCommand;
+import com.xism4.shieldmotd.enums.StatusHandlerEnum;
 import com.xism4.shieldmotd.listeners.LoginHandlerListener;
 import com.xism4.shieldmotd.listeners.ProxyHandlerListener;
 import com.xism4.shieldmotd.manager.ChannelHandlerManager;
@@ -14,7 +15,8 @@ public final class ShieldMotd extends Plugin {
 
     private ChannelHandlerManager channelHandlerManager;
     private ConfigurationManager configurationManager;
-    private MotdManager motdManager;    
+    private MotdManager motdManager;
+    private StatusHandlerEnum statusHandlerEnum;
 
     @Override
     public void onEnable() {
@@ -52,5 +54,9 @@ public final class ShieldMotd extends Plugin {
 
     public void loadCommands() {
         getProxy().getPluginManager().registerCommand(this, new ShieldMotdCommand(this));
+    }
+
+    public StatusHandlerEnum getStatusManager() {
+        return statusHandlerEnum;
     }
 }

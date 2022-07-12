@@ -31,6 +31,8 @@ public class LoginHandlerListener implements Listener {
 
         if (connection == null || connection.getUniqueId() == null || packet == null) {
             if(ProxyServer.getInstance().getName().equals("NullCordX")) {
+                core.getLogger().log(Level.INFO,
+                        "-> NullCordX has been detected, ignoring checks");
                 return;
             }
             channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
