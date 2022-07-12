@@ -3,6 +3,7 @@ package com.xism4.shieldmotd.listeners;
 import com.xism4.shieldmotd.ShieldMotd;
 import com.xism4.shieldmotd.manager.ChannelHandlerManager;
 import io.netty.channel.ChannelHandlerContext;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.PendingConnection;
 import net.md_5.bungee.api.event.LoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
@@ -29,6 +30,9 @@ public class LoginHandlerListener implements Listener {
         final PendingConnection connection = event.getConnection();
 
         if (connection == null || connection.getUniqueId() == null || packet == null) {
+            if(ProxyServer.getInstance().getName().equals("NullCordX")) {
+                return;
+            }
             channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
             event.setCancelled(true);
 
