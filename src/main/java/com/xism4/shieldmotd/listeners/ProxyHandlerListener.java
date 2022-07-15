@@ -30,6 +30,7 @@ public class ProxyHandlerListener implements Listener {
 
         ChannelHandlerManager channelHandlerManager = core.getChannelHandlerManager();
         ServerPing pingHandler = event.getResponse();
+        @SuppressWarnings("deprecation")
         String address = event.getConnection().getAddress().getAddress().getHostAddress();
 
         if (ProxyServer.getInstance().getName().equals(core.getConfigurationManager().getStringList("motd.ignore-proxy"))) {
@@ -39,13 +40,15 @@ public class ProxyHandlerListener implements Listener {
         }
 
         if (pingHandler == null) {
-            channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
+            //TODO: wut
+            //channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
             core.getLogger().warning("An handshake was null and cancelled");
             return;
         }
 
         if (cause instanceof FastMotdException || cause instanceof BadPacketException || cause instanceof OverflowPacketException) {
-            channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
+            // TODO: wut
+            //channelHandlerManager.closeChannel((ChannelHandlerContext) this, address);
             core.getLogger().log(Level.INFO,
                     "The connection -> {0} rate-limited bad-joins, we suggest blacklist", address);
             return;

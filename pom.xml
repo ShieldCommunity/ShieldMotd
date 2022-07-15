@@ -41,18 +41,6 @@
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <minimizeJar>true</minimizeJar>
-                            <relocations>
-                                <relocation>
-                                  <pattern>net.kyori</pattern>
-                                  <shadedPattern>com.xism4.shaded.net.kyori</shadedPattern>
-                                </relocation>
-                            </relocations>
-                            <artifactSet>
-                                <excludes>
-                                    <exclude>org.jetbrains:annotations</exclude>
-                                    <exclude>org.intellij.lang:annotations</exclude>
-                                </excludes>
-                            </artifactSet>
                         </configuration>
                     </execution>
                 </executions>
@@ -102,13 +90,21 @@
         </dependency>
         <dependency>
             <groupId>net.kyori</groupId>
-            <artifactId>adventure-text-serializer-bungeecord</artifactId>
-            <version>4.1.1</version>
-        </dependency>
+            <artifactId>adventure-text-serializer-gson</artifactId>
+            <version>4.11.0</version>
+            <scope>provided</scope>
+         </dependency>
         <dependency>
             <groupId>net.kyori</groupId>
             <artifactId>adventure-text-minimessage</artifactId>
             <version>4.11.0</version>
+            <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-text-serializer-legacy</artifactId>
+            <version>4.11.0</version>
+            <scope>provided</scope>
+         </dependency>
     </dependencies>
 </project>
