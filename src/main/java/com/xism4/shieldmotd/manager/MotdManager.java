@@ -4,6 +4,7 @@ import com.xism4.shieldmotd.ShieldMotd;
 import com.xism4.shieldmotd.utils.TextUtils;
 
 import net.md_5.bungee.api.ServerPing;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.List;
@@ -30,21 +31,22 @@ public class MotdManager {
             .getConfig()
             .getStringList("motd.lines")
             .stream()
-            .map(TextUtils::toBungeeComponent)
+            .map(TextUtils::toModernComponent)
             .collect(Collectors.toList());
         legacyMotds = plugin.getConfigurationManager()
             .getConfig()
             .getStringList("motd.lines")
             .stream()
-            .map(TextUtils::toLegacyBungeeComponent)
+            .map(TextUtils::toLegacyComponent)
             .collect(Collectors.toList());
     }
 
-    public TextComponent getMotd() {
+    public BaseComponent getMotd() {
         return motds.get(random.nextInt(motds.size()));
+        
     }
 
-    public TextComponent getLegacyMotd() {
+    public BaseComponent getLegacyMotd() {
         return legacyMotds.get(random.nextInt(legacyMotds.size()));
     }
 
@@ -64,5 +66,10 @@ public class MotdManager {
 
     public boolean isDenyProtocol() {
         return denyProtocols;
+    }
+
+    @Override
+    public String toString() {
+        return "MotdManager[limitBadMotds="+limitBadMotds+",denyProtocols="+denyProtocols+",modernMotds="+motds+"legacyMotds+"+legacyMotds+"]";
     }
 }
