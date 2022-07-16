@@ -12,6 +12,6 @@ public class StatusHandlerEnum {
 
     private enum State {
 
-        HANDSHAKE, STATUS, PING, USERNAME, ENCRYPT, FINISHING;
+        HANDSHAKE, EVENT, STATUS, PING, USERNAME, ENCRYPT, FINISHING;
     }
 }
