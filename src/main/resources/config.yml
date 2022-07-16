@@ -11,3 +11,13 @@
   ignore-proxy:
     - NullCordX
     - Waterfall
+
+#You can customize disconnect messages, if you want to.
+  messages:
+    bad-handshake:
+      - <red>You are not allowed to connect to this server due bad-packet.
+      - <red>Please contact an admin if you think this is a mistake.
+#If the connection throwed before joining multiple exceptions, it will be disconnected
+    multiple-exceptions:
+        - <red>You are not allowed to connect to this server due multiple exceptions.
+        - <red>Please contact an admin if you think this is a mistake.
