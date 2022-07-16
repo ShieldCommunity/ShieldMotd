@@ -10,5 +10,4 @@
 # You can disable them on this simple list by checking the brand
   ignore-proxy:
     - NullCordX
-    - XCord
-    - FlameCord
+    - Waterfall

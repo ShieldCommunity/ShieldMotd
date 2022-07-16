@@ -3,7 +3,6 @@ package com.xism4.shieldmotd;
 import com.xism4.shieldmotd.command.ShieldMotdCommand;
 import com.xism4.shieldmotd.enums.StatusHandlerEnum;
 import com.xism4.shieldmotd.listeners.ProxyHandlerListener;
-import com.xism4.shieldmotd.manager.ChannelHandlerManager;
 import com.xism4.shieldmotd.manager.ConfigurationManager;
 import com.xism4.shieldmotd.manager.MotdManager;
 
@@ -12,7 +11,6 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 public final class ShieldMotd extends Plugin {
 
-    private ChannelHandlerManager channelHandlerManager;
     private ConfigurationManager configurationManager;
     private MotdManager motdManager;
     private StatusHandlerEnum statusHandlerEnum;
@@ -21,7 +19,6 @@ public final class ShieldMotd extends Plugin {
     public void onEnable() {
         this.configurationManager = new ConfigurationManager(this, "config.yml");
         this.motdManager = new MotdManager(this);
-        this.channelHandlerManager = new ChannelHandlerManager();
         loadCommands();
         loadEvents();
 
@@ -32,10 +29,6 @@ public final class ShieldMotd extends Plugin {
     @Override
     public void onDisable() {
         getLogger().info("ShieldMotd has been disabled, thanks for using it");
-    }
-
-    public ChannelHandlerManager getChannelHandlerManager() {
-        return channelHandlerManager;
     }
 
     public ConfigurationManager getConfigurationManager() {
