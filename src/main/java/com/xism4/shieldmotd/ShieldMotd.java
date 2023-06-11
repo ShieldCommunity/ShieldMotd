@@ -2,7 +2,7 @@ package com.xism4.shieldmotd;
 
 import com.xism4.shieldmotd.command.ShieldMotdCommand;
 import com.xism4.shieldmotd.enums.StatusHandlerEnum;
-import com.xism4.shieldmotd.listeners.ProxyHandlerListener;
+import com.xism4.shieldmotd.listeners.MotdListener;
 import com.xism4.shieldmotd.manager.ConfigurationManager;
 import com.xism4.shieldmotd.manager.MotdManager;
 
@@ -40,7 +40,7 @@ public final class ShieldMotd extends Plugin {
     }
 
     public void loadEvents() {
-        getProxy().getPluginManager().registerListener(this, new ProxyHandlerListener(this));
+        getProxy().getPluginManager().registerListener(this, new MotdListener(this));
     }
 
     public void loadCommands() {
