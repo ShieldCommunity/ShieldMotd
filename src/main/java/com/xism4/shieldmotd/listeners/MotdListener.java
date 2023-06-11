@@ -1,6 +1,7 @@
 package com.xism4.shieldmotd.listeners;
 
 import com.xism4.shieldmotd.ShieldMotd;
+import com.xism4.shieldmotd.manager.ConfigurationHandler;
 import io.netty.channel.ChannelHandlerContext;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.event.ProxyPingEvent;
@@ -19,12 +20,16 @@ public class MotdListener implements Listener {
 
         ServerPing pingHandler = event.getResponse();
 
-        if (pingHandler == null) {
+        if (pingHandler == null
+                && ConfigurationHandler.IMP.MOTD.CLOSE_ON_INVALID_PING) {
             ctx.channel().close();
-            core.getLogger().warning("Invalid ping response");
+            core.getLogger().warning(
+                    "Invalid ping response"
+            );
             return;
         }
 
-        core.getMotdManager().setMotd(pingHandler, event.getResponse().getVersion().getProtocol());
+        core.getMotdManager().setMotd(pingHandler,
+                event.getResponse().getVersion().getProtocol());
     }
 }

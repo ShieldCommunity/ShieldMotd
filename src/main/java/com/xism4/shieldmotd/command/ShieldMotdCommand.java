@@ -1,10 +1,13 @@
 package com.xism4.shieldmotd.command;
 
 import com.xism4.shieldmotd.ShieldMotd;
+import com.xism4.shieldmotd.manager.ConfigurationHandler;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
+
+import java.io.File;
 
 public class ShieldMotdCommand extends Command {
 
@@ -24,7 +27,7 @@ public class ShieldMotdCommand extends Command {
         }
 
         if ("reload".equalsIgnoreCase(args[0])) {
-            core.getConfigurationManager().reload();
+            ConfigurationHandler.IMP.reload(new File("resources", "config.yml"));
             core.getMotdManager().setupMotd();
             sender.sendMessage(new ComponentBuilder("ShieldMotd - has been reload successfully")
                     .color(ChatColor.YELLOW).create());

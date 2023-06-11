@@ -3,11 +3,15 @@ package com.xism4.shieldmotd;
 import com.xism4.shieldmotd.command.ShieldMotdCommand;
 import com.xism4.shieldmotd.enums.StatusHandlerEnum;
 import com.xism4.shieldmotd.listeners.MotdListener;
+import com.xism4.shieldmotd.manager.ConfigurationHandler;
 import com.xism4.shieldmotd.manager.ConfigurationManager;
 import com.xism4.shieldmotd.manager.MotdManager;
 
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
+
+import javax.security.auth.login.Configuration;
+import java.io.File;
 
 public final class ShieldMotd extends Plugin {
 
@@ -24,6 +28,8 @@ public final class ShieldMotd extends Plugin {
 
         getLogger().info("ShieldMotd has been loaded successfully, running on " +
                 ProxyServer.getInstance().getName());
+
+       //ConfigurationHandler.IMP.reload(new File("resources", "config.yml"));
     }
 
     @Override
