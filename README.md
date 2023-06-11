@@ -1,3 +1,3 @@
 # ShieldMotd
 
-Ligthweigth motd system designed for large network, supporting all versions & anti-exploit to avoid motd smashers.
+Ligthweigth motd system designed for easy MOTD handling with RGB/MiniMotd support
