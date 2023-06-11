@@ -17,8 +17,6 @@ public class MotdManager {
     private final Random random;
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
-    private boolean limitBadMotds;
-    private boolean denyProtocols;
 
     public MotdManager(ShieldMotd plugin) {
         this.plugin = plugin;
@@ -60,16 +58,8 @@ public class MotdManager {
         }
     }
 
-    public boolean isLimitBadMotds() {
-        return limitBadMotds;
-    }
-
-    public boolean isDenyProtocol() {
-        return denyProtocols;
-    }
-
     @Override
     public String toString() {
-        return "MotdManager[limitBadMotds="+limitBadMotds+",denyProtocols="+denyProtocols+",modernMotds="+motds+"legacyMotds+"+legacyMotds+"]";
+        return "MotdManager[modernMotds="+motds+"legacyMotds+"+legacyMotds+"]";
     }
 }
