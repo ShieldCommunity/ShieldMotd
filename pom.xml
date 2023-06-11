@@ -56,10 +56,6 @@
 
     <repositories>
         <repository>
-            <id>codemc-snapshots</id>
-            <url>https://repo.codemc.io/repository/maven-snapshots/</url>
-        </repository>
-        <repository>
             <id>netty</id>
             <url>https://repo.codemc.io/repository/maven-snapshots/</url>
         </repository>
@@ -74,12 +70,6 @@
             <groupId>io.github.waterfallmc</groupId>
             <artifactId>waterfall-api</artifactId>
             <version>1.19-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-proxy</artifactId>
-            <version>1.19-R0.1-20220702.004232-16</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
