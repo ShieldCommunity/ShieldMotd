@@ -3,6 +3,7 @@ package com.xism4.shieldmotd.listeners;
 import com.xism4.shieldmotd.ShieldMotd;
 import io.netty.channel.ChannelHandlerContext;
 import net.md_5.bungee.api.ServerPing;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -15,12 +16,14 @@ public class MotdListener implements Listener {
     }
 
     @EventHandler(priority = 64)
-    public void proxyHandler(ProxyPingEvent event, ChannelHandlerContext ctx) {
+    public void proxyHandler(ProxyPingEvent event) {
 
         ServerPing pingHandler = event.getResponse();
 
         if (pingHandler == null) {
-            ctx.channel().close();
+               event.getConnection().disconnect(new TextComponent(
+                       "Invalid ping?")
+               );
             core.getLogger().warning("Invalid ping response");
             return;
         }
