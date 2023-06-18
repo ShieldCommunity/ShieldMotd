@@ -27,22 +27,22 @@ public class MotdManager {
 
     public void setupMotd() {
         motds = plugin.getConfigurationManager()
-            .getConfig()
-            .getStringList("motd.lines")
-            .stream()
-            .map(TextUtils::toModernComponent)
-            .collect(Collectors.toList());
+                .getConfig()
+                .getStringList("motd.lines")
+                .stream()
+                .map(TextUtils::toModernComponent)
+                .collect(Collectors.toList());
         legacyMotds = plugin.getConfigurationManager()
-            .getConfig()
-            .getStringList("motd.lines")
-            .stream()
-            .map(TextUtils::toLegacyComponent)
-            .collect(Collectors.toList());
+                .getConfig()
+                .getStringList("motd.lines")
+                .stream()
+                .map(TextUtils::toLegacyComponent)
+                .collect(Collectors.toList());
     }
 
     public BaseComponent getMotd() {
         return motds.get(random.nextInt(motds.size()));
-        
+
     }
 
     public BaseComponent getLegacyMotd() {
@@ -53,10 +53,9 @@ public class MotdManager {
         if (protocol < 735) {
             // Legacy client(<= 1.15.2) does not need an HEX Motd
             ping.setDescriptionComponent(getLegacyMotd());
-        } else {
-            // Modern client(1.16+)
-            ping.setDescriptionComponent(getMotd());
         }
+        // Modern client(1.16+)
+        ping.setDescriptionComponent(getMotd());
     }
 
     public MotdManager hidePlayerCount(final boolean hidePlayerCount) {
