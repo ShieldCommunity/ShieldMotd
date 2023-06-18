@@ -8,6 +8,7 @@ Ligthweigth motd system designed for easy MOTD handling with RGB/MiniMotd suppor
 - Hexadecimal colour support
 - MiniMOTD format support
 - Legacy colour support
+- Option to hide players's count
 - Performant handling system
 
 ## Thanks to the contributors of this proyect
