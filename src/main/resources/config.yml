@@ -1,7 +1,12 @@
-#You can edit what ever you want, add variables and that stuff
+#ShieldMotd by xIsm4 - www.shieldcommunity.net
+
+#You can use multiple formats such as MiniMessage, Legacy or RGB
   motd:
     lines:
       - |-
         <gradient:red:blue>ShieldMotd</gradient> <yellow>Lightweight Motd<reset>
         <gradient:#F53803:#FCE043>Full HEX color Support</gradient>
       - <gradient:red:blue>ShieldMotd</gradient> <newline><aqua>Full motd from single line
+
+#Should the motd hide the real count of players on some ping request?
+  hide-players: false

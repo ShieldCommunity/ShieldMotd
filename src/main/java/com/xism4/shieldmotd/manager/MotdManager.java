@@ -17,6 +17,7 @@ public class MotdManager {
     private final Random random;
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
+    private boolean hidePlayerCount;
 
     public MotdManager(ShieldMotd plugin) {
         this.plugin = plugin;
@@ -56,6 +57,11 @@ public class MotdManager {
             // Modern client(1.16+)
             ping.setDescriptionComponent(getMotd());
         }
+    }
+
+    public MotdManager hidePlayerCount(final boolean hidePlayerCount) {
+        this.hidePlayerCount = hidePlayerCount;
+        return this;
     }
 
     @Override
