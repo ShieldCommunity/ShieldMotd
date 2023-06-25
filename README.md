@@ -5,11 +5,12 @@ Ligthweigth motd system designed for easy MOTD handling with RGB/MiniMotd suppor
 
 ## Features
 
-- Hexadecimal colour support
-- MiniMOTD format support
-- Legacy colour support
-- Option to hide players's count
-- Performant handling system
+- Hexadecimal colour support - RGB system formatting supported from 1.16+
+- MiniMOTD format support - Improved formatting designed for new people
+- Automatic response for versions - Depending on the protocol changes formatting
+- Legacy colour support - Normaly for old versions 
+- Option to hide players's count - If you want your players to be uncounted
+- Performant handling system - Prepared to run properly on large servers
 
 ## Thanks to the contributors of this proyect
 
