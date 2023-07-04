@@ -10,3 +10,11 @@
 
 #Should the motd hide the real count of players on some ping request?
   hide-players: false
+
+#Should the motd set a custom player-information?
+  player-info: " <gradient:red:blue>ShieldMotd</gradient>"
+  enabled: true
+
+#What name should the MOTD send when receives a ping request
+  version-name: "ShieldMotd"
+  override-name: false

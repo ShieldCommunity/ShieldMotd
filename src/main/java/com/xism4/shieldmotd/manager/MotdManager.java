@@ -17,7 +17,7 @@ public class MotdManager {
     private final Random random;
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
-    private boolean hidePlayerCount;
+
 
     public MotdManager(ShieldMotd plugin) {
         this.plugin = plugin;
@@ -58,9 +58,24 @@ public class MotdManager {
         ping.setDescriptionComponent(getMotd());
     }
 
-    public MotdManager hidePlayerCount(final boolean hidePlayerCount) {
-        this.hidePlayerCount = hidePlayerCount;
-        return this;
+    public boolean hidePlayerHandler() {
+        return plugin.getConfigurationManager().getConfig().getBoolean("motd.hide-players");
+    }
+
+    public String versionHandler() {
+        return plugin.getConfigurationManager().getConfig().getString("motd.version-name");
+    }
+
+    public boolean versionHandlerCheck(){
+        return plugin.getConfigurationManager().getConfig().getBoolean("motd.version-name.override-name");
+    }
+
+    public boolean playerInfoHandlerCheck(){
+        return plugin.getConfigurationManager().getConfig().getBoolean("motd.player-info.enabled");
+    }
+
+    public String playerInfoHandler(){
+        return plugin.getConfigurationManager().getConfig().getString("motd.player-info");
     }
 
     @Override

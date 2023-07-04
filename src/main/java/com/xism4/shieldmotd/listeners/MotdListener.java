@@ -30,13 +30,23 @@ public class MotdListener implements Listener {
             return;
         }
 
-        if(core.getConfigurationManager().getConfig().getBoolean("motd.hide-players")) {
-            motdManager.hidePlayerCount(true);
-            pingHandler.setPlayers(new ServerPing.Players(
-                    pingHandler.getPlayers().getMax(),
-                    0,
-                    pingHandler.getPlayers().getSample()
-            ));
+        ServerPing.Players player = pingHandler.getPlayers();
+        ServerPing.Protocol protocolHandler = pingHandler.getVersion();
+
+        if(motdManager.versionHandlerCheck()) {
+            protocolHandler.setName(motdManager.versionHandler());
+        }
+
+        if(motdManager.hidePlayerHandler()) {
+                    pingHandler.getPlayers().setOnline(0);
+        }
+
+        if(motdManager.playerInfoHandlerCheck()) {
+            player.setSample(new ServerPing.PlayerInfo[]{
+                    new ServerPing.PlayerInfo(motdManager.playerInfoHandler(),
+                            protocolHandler.getName())
+            });
+
         }
 
         core.getMotdManager().setMotd(pingHandler, event.getResponse().getVersion().getProtocol());
