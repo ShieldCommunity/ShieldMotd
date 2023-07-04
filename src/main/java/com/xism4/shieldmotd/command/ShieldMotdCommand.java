@@ -29,8 +29,9 @@ public class ShieldMotdCommand extends Command {
             sender.sendMessage(new ComponentBuilder("ShieldMotd - has been reload successfully")
                     .color(ChatColor.YELLOW).create());
 
-        }
+        } else {
             sender.sendMessage(new ComponentBuilder("ShieldMotd - The command does not exist")
                     .color(ChatColor.RED).create());
         }
     }
+}
