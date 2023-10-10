@@ -58,8 +58,8 @@ public class MotdManager {
         ping.setDescriptionComponent(getMotd());
     }
 
-    public boolean hidePlayerHandler() {
-        return plugin.getConfigurationManager().getConfig().getBoolean("motd.hide-players");
+    public boolean oneMoreHandler() {
+        return plugin.getConfigurationManager().getConfig().getBoolean("motd.one-more-player");
     }
 
     public String versionHandler() {

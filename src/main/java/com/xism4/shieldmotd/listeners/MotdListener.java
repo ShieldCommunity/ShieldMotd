@@ -2,7 +2,6 @@ package com.xism4.shieldmotd.listeners;
 
 import com.xism4.shieldmotd.ShieldMotd;
 import com.xism4.shieldmotd.manager.MotdManager;
-import io.netty.channel.ChannelHandlerContext;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
@@ -37,8 +36,8 @@ public class MotdListener implements Listener {
             protocolHandler.setName(motdManager.versionHandler());
         }
 
-        if(motdManager.hidePlayerHandler()) {
-                    pingHandler.getPlayers().setOnline(0);
+        if(motdManager.oneMoreHandler()) {
+                    pingHandler.getPlayers().setOnline(+1);
         }
 
         if(motdManager.playerInfoHandlerCheck()) {
