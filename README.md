@@ -20,4 +20,4 @@ Ligthweigth motd system designed for easy MOTD handling with RGB/MiniMotd suppor
 ## Why this plugin instead others?
 - Simple configuration system
 - Open source software
-- BungeeCord MOTD improvement by MiniMotd
+- BungeeCord MOTD improvement by MiniMessage
