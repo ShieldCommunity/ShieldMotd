@@ -48,7 +48,7 @@ public class MotdListener implements Listener {
         core.getLogger().info(
                 "Protocol response "
                         + event.getResponse().getVersion().getProtocol()
-                + " for " + event.getConnection().getAddress().getAddress().getHostAddress()
+                + " for " + event.getConnection().getName()
         );
     }
 
