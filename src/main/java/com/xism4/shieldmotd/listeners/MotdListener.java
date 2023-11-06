@@ -45,6 +45,11 @@ public class MotdListener implements Listener {
         }
 
         core.getMotdManager().setMotd(pingHandler, event.getResponse().getVersion().getProtocol());
+        core.getLogger().info(
+                "Protocol response "
+                        + event.getResponse().getVersion().getProtocol()
+                + " for " + event.getConnection().getAddress().getAddress().getHostAddress()
+        );
     }
 
 }
