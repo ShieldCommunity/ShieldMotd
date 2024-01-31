@@ -30,3 +30,5 @@ public class ShieldMotdCommand extends Command {
                     .color(ChatColor.YELLOW).create());
 
         }
+    }
+}
