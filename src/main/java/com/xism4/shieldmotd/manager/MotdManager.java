@@ -26,13 +26,15 @@ public class MotdManager {
     }
 
     public void setupMotd() {
-        Stream<String> linesStream = ShieldMotdConfig.IMP.MOTD.LINES.stream();
-        motds = linesStream
+        List<String> lines = ShieldMotdConfig.IMP.MOTD.LINES;
+
+        motds = lines.stream()
                 .map(TextUtils::toModernComponent)
-                .collect(Collectors.toList());
-        legacyMotds = linesStream
+                .toList();
+
+        legacyMotds = lines.stream()
                 .map(TextUtils::toLegacyComponent)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public BaseComponent getMotd() {

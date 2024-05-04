@@ -15,7 +15,7 @@ public final class ShieldMotd extends Plugin {
 
     @Override
     public void onEnable() {
-        ShieldMotdConfig.IMP.load();
+        ShieldMotdConfig.IMP.reload();
         this.motdManager = new MotdManager();
         PluginManager pluginManager = getProxy().getPluginManager();
         pluginManager.registerCommand(this, new ShieldMotdCommand(this));

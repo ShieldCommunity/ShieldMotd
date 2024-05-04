@@ -17,7 +17,7 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
             .build();
 
     public ShieldMotdConfig() {
-        super(Paths.get("config.yml"), CONFIG);
+        super(Paths.get("plugins/ShieldMotd/config.yml"), CONFIG);
         this.MOTD = new MOTD();
         this.PLAYER_INFO = new PLAYER_INFO();
         this.VERSION = new VERSION();
@@ -38,9 +38,6 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
             LINES.add("<gradient:red:blue>ShieldMotd</gradient> <yellow>Lightweight Motd<reset><br> <gradient:#F53803:#FCE043>Full HEX color Support</gradient>");
             LINES.add("<gradient:red:blue>ShieldMotd</gradient> <newline><aqua>Full motd from single line");
         }
-        @NewLine
-        @Comment(@CommentValue("Should the motd hide the real count of players on some ping request?"))
-        public boolean HIDE_PLAYERS = false;
     }
 
     @NewLine
