@@ -39,7 +39,7 @@ public class MotdListener implements Listener {
             });
         }
 
-        core.getMotdManager().setMotd(pingHandler, event.getResponse().getVersion().getProtocol());
+        core.getMotdManager().setMotd(pingHandler, protocolHandler.getProtocol());
         //core.getLogger().info("Protocol response " + event.getResponse().getVersion().getProtocol() + " for " + event.getConnection().getName()); why even log this info?
     }
 
