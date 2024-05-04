@@ -1,6 +1,5 @@
 package com.xism4.shieldmotd.manager;
 
-import com.xism4.shieldmotd.ShieldMotd;
 import com.xism4.shieldmotd.config.ShieldMotdConfig;
 import com.xism4.shieldmotd.utils.TextUtils;
 
@@ -10,8 +9,6 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class MotdManager {
 
