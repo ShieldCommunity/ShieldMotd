@@ -8,20 +8,16 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
 
 public class TextUtils {
-    private TextUtils() {}
 
     public static Component toComponent(String text) {
-        text = text.replace("\n", "<br>")
-            .replace(LegacyComponentSerializer.SECTION_CHAR, LegacyComponentSerializer.AMPERSAND_CHAR);
+        text = text.replace("\n", "<br>").replace(LegacyComponentSerializer.SECTION_CHAR, LegacyComponentSerializer.AMPERSAND_CHAR);
         Component initial = LegacyComponentSerializer.legacyAmpersand().deserialize(text);
         String deserializedAsMini = MiniMessage.miniMessage().serialize(initial).replace("\\", "");
-        
         return MiniMessage.miniMessage().deserialize(deserializedAsMini);
     }
 
     public static TextComponent toModernComponent(String text) {
         String json = GsonComponentSerializer.gson().serialize(toComponent(text));
-
         return new TextComponent(ComponentSerializer.parse(json));
     }
 

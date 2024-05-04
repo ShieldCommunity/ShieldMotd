@@ -8,6 +8,6 @@ commands:
     description: Simple motd command
 
 libraries:
-  - net.kyori:adventure-text-serializer-bungeecord:4.1.1
-  - net.kyori:adventure-text-minimessage:4.11.0
-  - net.kyori:adventure-text-serializer-legacy:4.11.0
+  - net.kyori:adventure-text-serializer-bungeecord:4.3.2
+  - net.kyori:adventure-text-minimessage:4.16.0
+  - net.kyori:adventure-text-serializer-legacy:4.16.0
