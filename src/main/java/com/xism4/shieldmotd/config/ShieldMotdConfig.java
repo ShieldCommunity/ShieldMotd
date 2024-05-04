@@ -26,14 +26,15 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
     @Transient
     public static final ShieldMotdConfig IMP = new ShieldMotdConfig();
 
-    @Comment(@CommentValue("ShieldMotd by xIsm4 - www.shieldcommunity.net"))
+    @Comment(@CommentValue("ShieldMotd by xIsm4 & ShieldCommunity Team - www.shieldcommunity.net"))
 
     @NewLine
     public MOTD MOTD;
+
+    @Comment(@CommentValue("Main MOTD settings"))
     public static class MOTD {
         @Comment(@CommentValue("You can use multiple formats such as MiniMessage, Legacy or RGB"))
         public List<String> LINES = new LinkedList<>();
-
         {
             LINES.add("<gradient:red:blue>ShieldMotd</gradient> <yellow>Lightweight Motd<reset><br> <gradient:#F53803:#FCE043>Full HEX color Support</gradient>");
             LINES.add("<gradient:red:blue>ShieldMotd</gradient> <newline><aqua>Full motd from single line");
@@ -42,9 +43,8 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
 
     @NewLine
     public PLAYER_INFO PLAYER_INFO;
+    @Comment(@CommentValue("Settings for custom player information"))
     public static class PLAYER_INFO {
-
-        @Comment(@CommentValue("Should the motd set a custom player-information?"))
         public boolean ENABLED = true;
         public String INFO = " <gradient:red:blue>ShieldMotd</gradient>";
 
@@ -52,9 +52,8 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
 
     @NewLine
     public VERSION VERSION;
+    @Comment(@CommentValue("Settings for the name that MOTD send when receives a ping request"))
     public static class VERSION {
-
-        @Comment(@CommentValue("What name should the MOTD send when receives a ping request"))
         public boolean ENABLED = true;
         public String NAME = "ShieldMotd";
     }
