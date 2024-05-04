@@ -33,7 +33,10 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
 
     @Comment(@CommentValue("Main MOTD settings"))
     public static class MOTD {
-        @Comment(@CommentValue("You can use multiple formats such as MiniMessage, Legacy or RGB"))
+        @Comment({
+                @CommentValue("Randomized MOTD rows"),
+                @CommentValue("You can use multiple formats such as MiniMessage, Legacy or RGB")
+        })
         public List<String> LINES = new LinkedList<>();
         {
             LINES.add("<gradient:red:blue>ShieldMotd</gradient> <yellow>Lightweight Motd<reset><br> <gradient:#F53803:#FCE043>Full HEX color Support</gradient>");
