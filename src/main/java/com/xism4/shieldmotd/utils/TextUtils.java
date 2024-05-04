@@ -9,7 +9,7 @@ import net.md_5.bungee.chat.ComponentSerializer;
 
 public class TextUtils {
 
-    public static Component toComponent(String text) {
+    private static Component toComponent(String text) {
         text = text.replace("\n", "<br>").replace(LegacyComponentSerializer.SECTION_CHAR, LegacyComponentSerializer.AMPERSAND_CHAR);
         Component initial = LegacyComponentSerializer.legacyAmpersand().deserialize(text);
         String deserializedAsMini = MiniMessage.miniMessage().serialize(initial).replace("\\", "");
