@@ -18,8 +18,13 @@ public final class ShieldMotd extends Plugin {
         ShieldMotdConfig.IMP.reload();
         this.motdManager = new MotdManager();
         PluginManager pluginManager = getProxy().getPluginManager();
-        pluginManager.registerCommand(this, new ShieldMotdCommand(this));
-        pluginManager.registerListener(this, new MotdListener(this));
+        pluginManager.registerCommand(
+                this, new ShieldMotdCommand(this)
+        );
+        pluginManager.registerListener(
+                this, new MotdListener(this)
+        );
+
         getLogger().info("ShieldMotd has been loaded successfully, running on " + ProxyServer.getInstance().getName());
     }
 
