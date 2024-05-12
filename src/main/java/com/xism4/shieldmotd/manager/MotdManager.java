@@ -91,6 +91,6 @@ public class MotdManager {
 
     @Override
     public String toString() {
-        return "MotdManager[modernMotds="+motds+"legacyMotds+"+legacyMotds+"]";
+        return "MotdManager[modernMotds="+motds+"legacyMotds+"+legacyMotds+"protocolMotds="+protocolMotds+"]";
     }
 }
