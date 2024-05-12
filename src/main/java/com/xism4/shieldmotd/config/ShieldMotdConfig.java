@@ -42,6 +42,16 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
             LINES.add("<gradient:red:blue>ShieldMotd</gradient> <yellow>Lightweight Motd<reset><br> <gradient:#F53803:#FCE043>Full HEX color Support</gradient>");
             LINES.add("<gradient:red:blue>ShieldMotd</gradient> <newline><aqua>Full motd from single line");
         }
+
+        @Comment({
+                @CommentValue("Motds for specific protocol versions (https://minecraft.fandom.com/wiki/Protocol_version)"),
+                @CommentValue("Example: 763-766 means that this motd will be shown for players who plays on 1.20+")
+        })
+        public Map<String, List<String>> PROTOCOL_LINES = new HashMap<>();
+        {
+            PROTOCOL_LINES.put("763-766", List.of("<gradient:red:blue>ShieldMotd</gradient> <blue>This motd is for MC version 1.20"));
+        }
+
     }
 
     @NewLine
