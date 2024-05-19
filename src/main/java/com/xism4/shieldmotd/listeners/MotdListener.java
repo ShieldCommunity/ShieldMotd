@@ -2,7 +2,6 @@ package com.xism4.shieldmotd.listeners;
 
 import com.xism4.shieldmotd.ShieldMotd;
 import com.xism4.shieldmotd.config.ShieldMotdConfig;
-import com.xism4.shieldmotd.manager.MotdManager;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
