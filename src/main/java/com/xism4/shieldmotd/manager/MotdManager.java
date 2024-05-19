@@ -5,6 +5,7 @@ import com.xism4.shieldmotd.utils.FastRandom;
 import com.xism4.shieldmotd.utils.TextUtils;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -37,28 +38,32 @@ public class MotdManager {
                 .map(TextUtils::toLegacyComponent)
                 .toList();
 
+        if (ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.keySet().isEmpty()) {
+            return;
+        }
         for (String protocol : ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.keySet()) {
             if (protocol == null || protocol.isEmpty()) {
                 continue;
             }
+            protocol = protocol.trim();
             List<String> protocolLines = ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.get(protocol);
             String[] splitRange = protocol.split("-");
-            if (splitRange.length == 2) {
-                int firstValue = Integer.parseInt(splitRange[0]);
-                int secondValue = Integer.parseInt(splitRange[1]);
-                if (firstValue < secondValue) {
-                    for (int i = firstValue; i <= secondValue; i++) {
+            try {
+                if (splitRange.length == 2) {
+                    int firstValue = Integer.parseInt(splitRange[0]);
+                    int secondValue = Integer.parseInt(splitRange[1]);
+                    int lowerBound = Math.min(firstValue, secondValue);
+                    int upperBound = Math.max(firstValue, secondValue);
+                    for (int i = lowerBound; i <= upperBound; i++) {
                         setProtocolMotds(i, protocolLines);
                     }
                 } else {
-                    for (int i = secondValue; i <= firstValue; i++) {
-                        setProtocolMotds(i, protocolLines);
-                    }
+                    int protocolNumber = Integer.parseInt(protocol);
+                    setProtocolMotds(protocolNumber, protocolLines);
                 }
-                continue;
+            } catch (NumberFormatException  ex) {
+                ProxyServer.getInstance().getLogger().warning("Invalid protocol format: " + protocol);
             }
-            int protocolNumber = Integer.parseInt(protocol);
-            setProtocolMotds(protocolNumber, protocolLines);
         }
     }
 
