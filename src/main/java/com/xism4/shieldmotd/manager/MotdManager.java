@@ -19,7 +19,7 @@ public class MotdManager {
     private Random random;
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
-    private Map<Integer, List<TextComponent>> protocolMotds = new Int2ObjectOpenHashMap<>();
+    private final Map<Integer, List<TextComponent>> protocolMotds = new Int2ObjectOpenHashMap<>();
 
     public MotdManager() {
         random = FastRandom.getFastRandom();
@@ -51,8 +51,8 @@ public class MotdManager {
             String[] splitRange = protocol.split("-");
 
             if (splitRange.length == 2 && checkNumbers(splitRange[0].trim()) && checkNumbers(splitRange[1].trim())) {
-                int firstValue = Integer.parseInt(splitRange[0].trim());
-                int secondValue = Integer.parseInt(splitRange[1].trim());
+                int firstValue = Integer.parseInt(splitRange[0]);
+                int secondValue = Integer.parseInt(splitRange[1]);
 
                 int start = Math.min(firstValue, secondValue);
                 int end = Math.max(firstValue, secondValue);
@@ -61,7 +61,7 @@ public class MotdManager {
                     setProtocolMotds(i, protocolLines);
                 }
             } else if (checkNumbers(protocol.trim())) {
-                int protocolNumber = Integer.parseInt(protocol.trim());
+                int protocolNumber = Integer.parseInt(protocol);
                 setProtocolMotds(protocolNumber, protocolLines);
             } else {
                 ProxyServer.getInstance().getLogger().warning("Invalid protocol format: " + protocol);
