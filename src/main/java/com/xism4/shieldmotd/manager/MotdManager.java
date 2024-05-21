@@ -41,27 +41,29 @@ public class MotdManager {
         if (ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.keySet().isEmpty()) {
             return;
         }
+
         for (String protocol : ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.keySet()) {
             if (protocol == null || protocol.isEmpty()) {
                 continue;
             }
-            protocol = protocol.trim();
+
             List<String> protocolLines = ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.get(protocol);
             String[] splitRange = protocol.split("-");
-            try {
-                if (splitRange.length == 2) {
-                    int firstValue = Integer.parseInt(splitRange[0]);
-                    int secondValue = Integer.parseInt(splitRange[1]);
-                    int lowerBound = Math.min(firstValue, secondValue);
-                    int upperBound = Math.max(firstValue, secondValue);
-                    for (int i = lowerBound; i <= upperBound; i++) {
-                        setProtocolMotds(i, protocolLines);
-                    }
-                } else {
-                    int protocolNumber = Integer.parseInt(protocol);
-                    setProtocolMotds(protocolNumber, protocolLines);
+
+            if (splitRange.length == 2 && checkNumbers(splitRange[0].trim()) && checkNumbers(splitRange[1].trim())) {
+                int firstValue = Integer.parseInt(splitRange[0].trim());
+                int secondValue = Integer.parseInt(splitRange[1].trim());
+
+                int start = Math.min(firstValue, secondValue);
+                int end = Math.max(firstValue, secondValue);
+
+                for (int i = start; i <= end; i++) {
+                    setProtocolMotds(i, protocolLines);
                 }
-            } catch (NumberFormatException  ex) {
+            } else if (checkNumbers(protocol.trim())) {
+                int protocolNumber = Integer.parseInt(protocol.trim());
+                setProtocolMotds(protocolNumber, protocolLines);
+            } else {
                 ProxyServer.getInstance().getLogger().warning("Invalid protocol format: " + protocol);
             }
         }
@@ -92,6 +94,18 @@ public class MotdManager {
             return;
         }
         ping.setDescriptionComponent(getRandomMotd(protocol < 735));
+    }
+
+    private boolean checkNumbers(String string) {
+        if (string == null || string.isEmpty() || string.isBlank()) {
+            return false;
+        }
+        for (char c : string.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
