@@ -5,6 +5,7 @@ import com.xism4.shieldmotd.utils.FastRandom;
 import com.xism4.shieldmotd.utils.TextUtils;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -16,7 +17,7 @@ import java.util.Random;
 
 public class MotdManager {
 
-    private Random random;
+    private XoRoShiRo128PlusRandom random;
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
     private final Map<Integer, List<TextComponent>> protocolMotds = new Int2ObjectOpenHashMap<>();
