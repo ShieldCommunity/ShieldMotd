@@ -1,6 +1,6 @@
 # ShieldMotd
 
-Ligthweigth motd system designed for easy MOTD handling with RGB/MiniMotd support
+High-performance motd system designed for fast MOTD handling with MiniMessage
 
 
 ## Features
@@ -11,7 +11,7 @@ Ligthweigth motd system designed for easy MOTD handling with RGB/MiniMotd suppor
 - Automatic response for versions - Depending on the protocol changes formatting
 - Legacy colour support - Normaly for old versions 
 - Option to hide players's count - If you want your players to be uncounted
-- Performant handling system - Prepared to run properly on large servers
+- Performant handling system - Use of Netty's fast methods and FastUtils
 
 ## Thanks to the contributors of this proyect
 
@@ -22,3 +22,4 @@ Ligthweigth motd system designed for easy MOTD handling with RGB/MiniMotd suppor
 - Simple configuration system
 - Open source software
 - BungeeCord MOTD improvement by MiniMessage
+- System to detect modern and legacy connections, and display at same diferent motd's
