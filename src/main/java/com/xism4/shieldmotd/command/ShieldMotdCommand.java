@@ -7,6 +7,8 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
 
+import java.util.logging.Level;
+
 public class ShieldMotdCommand extends Command {
 
     private final ShieldMotd core;
@@ -18,14 +20,31 @@ public class ShieldMotdCommand extends Command {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
+
         if (args.length == 0) {
-            sender.sendMessage(new ComponentBuilder("ShieldMotd - simple & lightweight motd plugin by xIsm4").color(ChatColor.YELLOW).create());
+            sendPluginInfoMessage(sender);
             return;
         }
-        if (args[0].equalsIgnoreCase("reload")) {
+
+        if ("reload".equalsIgnoreCase(args[0])) {
+            reloadPlugin(sender);
+        }
+    }
+
+    private void sendPluginInfoMessage(CommandSender sender) {
+        sender.sendMessage(new ComponentBuilder("ShieldMotd by xism4").color(ChatColor.YELLOW).create());
+    }
+
+    private void reloadPlugin(CommandSender sender) {
+        try {
             ShieldMotdConfig.IMP.reload();
             core.getMotdManager().setupMotd();
-            sender.sendMessage(new ComponentBuilder("ShieldMotd - has been reload successfully").color(ChatColor.YELLOW).create());
+            sender.sendMessage(new ComponentBuilder(
+                    "ShieldMotd - Has been reloaded sucesfully").color(ChatColor.GREEN).create()
+            );
+        } catch (Exception exception) {
+            core.getLogger().log(Level.WARNING, "Exception while reloading the plugin " + exception.getCause());
+
         }
     }
 }
