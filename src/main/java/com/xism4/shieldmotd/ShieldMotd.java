@@ -14,18 +14,10 @@ import java.util.logging.Level;
 public final class ShieldMotd extends Plugin {
 
     private MotdManager motdManager;
-    private ProxyServer proxyServer;
 
     @Override
     public void onEnable() {
         ShieldMotdConfig.IMP.reload();
-
-        if(proxyServer.getName().contains("NullCordX")) {
-            this.getLogger().log(
-                    Level.WARNING,
-                    "NullCordX is detected and is highly recommend to use native-built feature"
-            );
-        }
 
         this.motdManager = new MotdManager();
 

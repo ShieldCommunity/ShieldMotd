@@ -13,17 +13,15 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class MotdManager {
 
-    private XoRoShiRo128PlusRandom random;
+    private final XoRoShiRo128PlusRandom random;
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
     private final Map<Integer, List<TextComponent>> protocolMotds = new Int2ObjectOpenHashMap<>();
 
     public MotdManager() {
-        random = FastRandom.getFastRandom();
         this.random = FastRandom.getFastRandom();
         setupMotd();
     }
