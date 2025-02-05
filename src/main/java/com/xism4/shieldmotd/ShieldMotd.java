@@ -4,12 +4,8 @@ import com.xism4.shieldmotd.command.ShieldMotdCommand;
 import com.xism4.shieldmotd.config.ShieldMotdConfig;
 import com.xism4.shieldmotd.listeners.MotdListener;
 import com.xism4.shieldmotd.manager.MotdManager;
-
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
-
-import java.util.logging.Level;
 
 public final class ShieldMotd extends Plugin {
 

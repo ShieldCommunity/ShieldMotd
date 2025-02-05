@@ -3,7 +3,7 @@ package com.xism4.shieldmotd.manager;
 import com.xism4.shieldmotd.config.ShieldMotdConfig;
 import com.xism4.shieldmotd.utils.FastRandom;
 import com.xism4.shieldmotd.utils.TextUtils;
-
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import net.md_5.bungee.api.ProxyServer;
@@ -12,17 +12,18 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.List;
-import java.util.Map;
 
 public class MotdManager {
 
     private final XoRoShiRo128PlusRandom random;
+    private final Int2ObjectMap<List<TextComponent>> protocolMotds;
+
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
-    private final Map<Integer, List<TextComponent>> protocolMotds = new Int2ObjectOpenHashMap<>();
 
     public MotdManager() {
         this.random = FastRandom.getFastRandom();
+        this.protocolMotds = new Int2ObjectOpenHashMap<>();
         setupMotd();
     }
 
@@ -37,7 +38,7 @@ public class MotdManager {
                 .map(TextUtils::toLegacyComponent)
                 .toList();
 
-        if (ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.keySet().isEmpty()) {
+        if (ShieldMotdConfig.IMP.MOTD.PROTOCOL_LINES.isEmpty()) {
             return;
         }
 
@@ -96,7 +97,7 @@ public class MotdManager {
     }
 
     private boolean checkNumbers(String string) {
-        if (string == null || string.isEmpty() || string.isBlank()) {
+        if (string == null || string.isBlank()) {
             return false;
         }
         for (char c : string.toCharArray()) {
@@ -109,6 +110,6 @@ public class MotdManager {
 
     @Override
     public String toString() {
-        return "MotdManager[modernMotds="+motds+"legacyMotds+"+legacyMotds+"protocolMotds="+protocolMotds+"]";
+        return "MotdManager[modernMotds=" + motds + "legacyMotds+" + legacyMotds + "protocolMotds=" + protocolMotds + "]";
     }
 }
