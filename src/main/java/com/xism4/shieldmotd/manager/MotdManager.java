@@ -12,11 +12,15 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MotdManager {
 
     private final XoRoShiRo128PlusRandom random;
     private final Int2ObjectMap<List<TextComponent>> protocolMotds;
+    private final ScheduledExecutorService scheduler;
 
     private List<TextComponent> motds;
     private List<TextComponent> legacyMotds;
@@ -24,7 +28,10 @@ public class MotdManager {
     public MotdManager() {
         this.random = FastRandom.getFastRandom();
         this.protocolMotds = new Int2ObjectOpenHashMap<>();
+        this.scheduler = Executors.newSingleThreadScheduledExecutor();
+
         setupMotd();
+        startMotdRotation();
     }
 
     public void setupMotd() {
@@ -81,6 +88,15 @@ public class MotdManager {
         }
     }
 
+    public void startMotdRotation() {
+        int interval = ShieldMotdConfig.IMP.MOTD.RANDOM_MOTD_TIME;
+        if (interval > 0) {
+            scheduler.scheduleAtFixedRate(() -> {
+                BaseComponent motd = getRandomMotd(false);
+            }, interval, interval, TimeUnit.SECONDS);
+        }
+    }
+
     public BaseComponent getRandomMotd(boolean isLegacy) {
         if (isLegacy) {
             return legacyMotds.get(random.nextInt(legacyMotds.size()));
@@ -108,8 +124,12 @@ public class MotdManager {
         return true;
     }
 
+    public void shutdown() {
+        scheduler.shutdown();
+    }
+
     @Override
     public String toString() {
-        return "MotdManager[modernMotds=" + motds + "legacyMotds+" + legacyMotds + "protocolMotds=" + protocolMotds + "]";
+        return "MotdManager[modernMotds=" + motds + "legacyMotds=" + legacyMotds + "protocolMotds=" + protocolMotds + "]";
     }
 }

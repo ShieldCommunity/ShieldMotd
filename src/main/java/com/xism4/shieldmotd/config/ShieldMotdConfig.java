@@ -55,6 +55,10 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
             PROTOCOL_LINES.put("763-766", List.of("<gradient:red:blue>ShieldMotd</gradient> <blue>This motd is for MC version 1.20"));
         }
 
+        @Comment({
+                @CommentValue("How often the different motds of the configuration will be toggled (in seconds)"),
+        })
+        public int RANDOM_MOTD_TIME = 120;
     }
 
     @NewLine
