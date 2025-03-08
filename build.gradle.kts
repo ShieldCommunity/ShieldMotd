@@ -17,6 +17,8 @@ repositories {
 }
 
 dependencies {
+    implementation("net.elytrium:serializer:1.1.1")
+    
     compileOnly("com.google.code.findbugs:annotations:3.0.1")
     compileOnly("com.google.code.findbugs:jsr305:3.0.1")
     compileOnly("io.github.waterfallmc:waterfall-api:1.20-R0.3-SNAPSHOT")

@@ -1,7 +1,7 @@
 package com.xism4.shieldmotd.config;
 
-import com.xism4.shieldmotd.libs.net.elytrium.serializer.SerializerConfig;
-import com.xism4.shieldmotd.libs.net.elytrium.serializer.language.object.YamlSerializable;
+import net.elytrium.serializer.SerializerConfig;
+import net.elytrium.serializer.language.object.YamlSerializable;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,8 +1,11 @@
 package com.xism4.shieldmotd.config;
 
-import com.xism4.shieldmotd.libs.net.elytrium.serializer.NameStyle;
-import com.xism4.shieldmotd.libs.net.elytrium.serializer.SerializerConfig;
-import com.xism4.shieldmotd.libs.net.elytrium.serializer.annotations.*;
+import net.elytrium.serializer.NameStyle;
+import net.elytrium.serializer.SerializerConfig;
+import net.elytrium.serializer.annotations.Comment;
+import net.elytrium.serializer.annotations.CommentValue;
+import net.elytrium.serializer.annotations.NewLine;
+import net.elytrium.serializer.annotations.Transient;
 
 import java.nio.file.Paths;
 import java.util.*;
