@@ -7,13 +7,12 @@ High-performance motd system designed for fast MOTD handling with MiniMessage
 
 ## Features
 
-- Hexadecimal colour support - RGB system formatting supported from 1.16+
-- MiniMOTD format support - Improved formatting designed for new people
-- Per protocol MOTD - Ability to use modern or legacy colours at once depending on client protocol 
-- Automatic response for versions - Depending on the protocol changes formatting
-- Legacy colour support - Normaly for old versions 
-- Option to hide players's count - If you want your players to be uncounted
-- Performant handling system - Use of Netty's fast methods and FastUtils
+- Adventure support for fresh colours like rgb or minimessage
+- Per protocol MOTD  gives ability to use modern/legacy colours at once depending on client protocol 
+- Automatic response for versions depending on the protocol changes formatting
+- Legacy colour support 
+- Option to hide players count 
+- High performance system - Most of things running on netty threads
 
 ## Thanks to the contributors of this proyect
 
@@ -23,5 +22,4 @@ High-performance motd system designed for fast MOTD handling with MiniMessage
 ## Why this plugin instead others?
 - Simple configuration system
 - Open source software
-- BungeeCord MOTD improvement by MiniMessage
-- System to detect modern and legacy connections, and display at same diferent motd's
+- System to detect modern and legacy connections, and display at same diferent motd
