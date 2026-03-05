@@ -30,7 +30,7 @@ public final class ShieldMotd extends Plugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("ShieldMotd has been disabled, thanks for using it");
+        getLogger().info("ShieldMotd has been disabled thanks for using it");
     }
 
     public MotdManager getMotdManager() {

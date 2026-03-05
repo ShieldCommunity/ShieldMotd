@@ -48,7 +48,8 @@ public class ShieldMotdConfig extends SafeYamlSerializable {
 
         @Comment({
                 @CommentValue("Motds for specific protocol versions (https://minecraft.fandom.com/wiki/Protocol_version)"),
-                @CommentValue("Example: 763-766 means that this motd will be shown for players who plays on 1.20+")
+                @CommentValue("Example: 763-766 means that this motd will be shown for players who plays on 1.20+"),
+                @CommentValue("As long Minecraft updates you can support protocol versions via config")
         })
         public Map<String, List<String>> PROTOCOL_LINES = new HashMap<>();
         {
